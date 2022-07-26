@@ -1,0 +1,53 @@
+/*Faça um programa no qual uma matriz de 4x4 números inteiros é criada 
+na função principal. Este programa deve utilizar uma função para a leitura 
+dos dados da matriz e uma função para a impressão dos dados da matriz. A 
+passagem de parâmetros para estas funções deve ser somente por 
+referência (apenas usando ponteiros).*/
+
+#include <stdio.h>
+
+void leitura (int *a, int *b){ //função que lê os valores digitados pelo usuário
+
+int matrix [4][4]; //criação da matriz  
+int i,j;
+
+  for(i=0; i<=3; i++){
+    for(j=0; j<=3; j++){
+      printf("Digite o elemento [%d] [%d]: ", i,j);
+      scanf("%d", &matrix[i][j]); 
+    }
+  }
+}
+
+void impres (int *c, int *d){ //função que imprime os valores digitados pelo usuário
+
+int matrix [4][4]; //criação da matriz  
+int i,j;
+
+ for(i=0; i<=3; i++){
+    for(j=0; j<=3; j++){
+      printf("\nElemento [%d] [%d] = %d",i,j,matrix[i][j]);
+    }
+  }
+
+  printf("\n\n");
+  
+  for(i=0; i<=3; i++){
+    for(j=0; j<=3; j++){
+      printf("[%d] ",matrix[i][j]);
+    }
+    printf("\n");
+  }
+}
+
+int main(void) {
+
+  int x,y;
+  
+  //passsagem dos parâmetros por referência
+  leitura(&x,&y); 
+  impres(&x, &y);
+ 
+  return 0;
+}
+
