@@ -1,0 +1,39 @@
+/*Utilizando recursividade faça um programa que converte todas as letras 
+de uma frase digitada pelo usuário em maiúsculas. Imprima a frase 
+convertida*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+int convert(char *s1, char *s2){
+  int i = 0;
+
+  if(s1[i]=='\0'){
+    return s2[i];
+  } else{
+    while(s1[i] != '\0'){
+      s2[i] = toupper(s1[i]);
+      i++;
+    }
+    s2[i] = '\0';
+  }
+  return 0;
+}
+
+
+int main(void) {
+
+  char str1[200];
+  char str2[200];
+
+  printf("Digite uma frase: ");
+  fgets(str1, 200, stdin);
+
+  convert(str1, str2);
+  printf("\n%s", str2);
+  
+ return 0;
+}
+
