@@ -1,0 +1,151 @@
+/*Faça um programa que cria uma estrutura de dados com as seguintes informações: 
+nome, idade, altura e peso. Crie 3 elementos desta estrutura e peça para o operador 
+digitar as informações necessárias para preenchê-las. Imprima os dados das três 
+estruturas começando pela pessoa mais baixa e terminando pela mais alta*/
+
+#include <stdio.h>
+
+int main(void) {
+  //criação da estrutura
+  struct dadosPesssoas {
+    char nome[100];
+    int idade;
+    double altura;
+    double peso;
+  };
+
+  //criação dos 3 elementos
+  struct dadosPesssoas pessoa1;
+  struct dadosPesssoas pessoa2;
+  struct dadosPesssoas pessoa3;
+
+  //obtendo dados do primeiro indivíduo
+  printf("Digite os dados do primeiro indivíduo: ");
+  printf("\nNome: ");
+  scanf("%s", pessoa1.nome);
+  
+  printf("Idade: ");
+  scanf("%d", &pessoa1.idade);
+
+  printf("Altura: ");
+  scanf("%lf", &pessoa1.altura);
+
+  printf("Peso: ");
+  scanf("%lf", &pessoa1.peso);
+
+  //obtendo dados do segundo indivíduo
+  printf("\nDigite os dados do segundo indivíduo: ");
+  printf("\nNome: ");
+  scanf("%s", pessoa2.nome);
+
+  printf("Idade: ");
+  scanf("%d", &pessoa2.idade);
+
+  printf("Altura: ");
+  scanf("%lf", &pessoa2.altura);
+
+  printf("Peso: ");
+  scanf("%lf", &pessoa2.peso);
+
+  //obtendo dados do terceiro indivíduo
+  printf("\nDigite os dados do terceiro indivíduo: ");
+  printf("\nNome: ");
+  scanf("%s", pessoa3.nome);
+
+  printf("Idade: ");
+  scanf("%d", &pessoa3.idade);
+
+  printf("Altura: ");
+  scanf("%lf", &pessoa3.altura);
+
+  printf("Peso: ");
+  scanf("%lf", &pessoa3.peso);
+
+   //imprimindo dados da pessoa mais baixa até a mais alta
+
+   if((pessoa1.altura<pessoa2.altura)&&(pessoa1.altura<pessoa3.altura)){
+    printf("\n\nDados dos indvíduos iniciando pela pessoa mais baixa:");
+    printf("\nNome: %s", pessoa1.nome);
+    printf("\nIdade: %d", pessoa1.idade);
+    printf("\nAltura: %.2f", pessoa1.altura);
+    printf("\nPeso: %.2f", pessoa1.peso);
+
+    if(pessoa2.altura<pessoa3.altura){
+    printf("\n\nNome: %s", pessoa2.nome);
+    printf("\nIdade: %d", pessoa2.idade);
+    printf("\nAltura: %.2f", pessoa2.altura);
+    printf("\nPeso: %.2f", pessoa2.peso);
+    printf("\n\nNome: %s", pessoa3.nome);
+    printf("\nIdade: %d", pessoa3.idade);
+    printf("\nAltura: %.2f", pessoa3.altura);
+    printf("\nPeso: %.2f", pessoa3.peso);
+    } else {
+    printf("\n\nNome: %s", pessoa3.nome);
+    printf("\nIdade: %d", pessoa3.idade);
+    printf("\nAltura: %.2f", pessoa3.altura);
+    printf("\nPeso: %.2f", pessoa3.peso);
+    printf("\n\nNome: %s", pessoa2.nome);
+    printf("\nIdade: %d", pessoa2.idade);
+    printf("\nAltura: %.2f", pessoa2.altura);
+    printf("\nPeso: %.2f", pessoa2.peso);
+    }
+  }
+
+    if((pessoa2.altura<pessoa1.altura)&&(pessoa2.altura<pessoa3.altura)){
+    printf("\n\nDados dos indvíduos iniciando pela pessoa mais baixa:");
+    printf("\nNome: %s", pessoa2.nome);
+    printf("\nIdade: %d", pessoa2.idade);
+    printf("\nAltura: %.2f", pessoa2.altura);
+    printf("\nPeso: %.2f", pessoa2.peso);
+
+    if(pessoa1.altura<pessoa3.altura){
+    printf("\n\nNome: %s", pessoa1.nome);
+    printf("\nIdade: %d", pessoa1.idade);
+    printf("\nAltura: %.2f", pessoa1.altura);
+    printf("\nPeso: %.2f", pessoa1.peso);
+    printf("\n\nNome: %s", pessoa3.nome);
+    printf("\nIdade: %d", pessoa3.idade);
+    printf("\nAltura: %.2f", pessoa3.altura);
+    printf("\nPeso: %.2f", pessoa3.peso);
+    } else {
+    printf("\n\nNome: %s", pessoa3.nome);
+    printf("\nIdade: %d", pessoa3.idade);
+    printf("\nAltura: %.2f", pessoa3.altura);
+    printf("\nPeso: %.2f", pessoa3.peso);
+    printf("\n\nNome: %s", pessoa1.nome);
+    printf("\nIdade: %d", pessoa1.idade);
+    printf("\nAltura: %.2f", pessoa1.altura);
+    printf("\nPeso: %.2f", pessoa1.peso);
+    }
+  }
+
+    if((pessoa3.altura<pessoa2.altura)&&(pessoa3.altura<pessoa1.altura)){
+    printf("\n\nDados dos indvíduos iniciando pela pessoa mais baixa:");
+    printf("\nNome: %s", pessoa3.nome);
+    printf("\nIdade: %d", pessoa3.idade);
+    printf("\nAltura: %.2f", pessoa3.altura);
+    printf("\nPeso: %.2f", pessoa3.peso);
+
+    if(pessoa2.altura<pessoa1.altura){
+    printf("\n\nNome: %s", pessoa2.nome);
+    printf("\nIdade: %d", pessoa2.idade);
+    printf("\nAltura: %.2f", pessoa2.altura);
+    printf("\nPeso: %.2f", pessoa2.peso);
+    printf("\n\nNome: %s", pessoa1.nome);
+    printf("\nIdade: %d", pessoa1.idade);
+    printf("\nAltura: %.2f", pessoa1.altura);
+    printf("\nPeso: %.2f", pessoa1.peso);
+    } else {
+    printf("\n\nNome: %s", pessoa1.nome);
+    printf("\nIdade: %d", pessoa1.idade);
+    printf("\nAltura: %.2f", pessoa1.altura);
+    printf("\nPeso: %.2f", pessoa1.peso);
+    printf("\n\nNome: %s", pessoa2.nome);
+    printf("\nIdade: %d", pessoa2.idade);
+    printf("\nAltura: %.2f", pessoa2.altura);
+    printf("\nPeso: %.2f", pessoa2.peso);
+    }
+  }
+  
+  return 0;
+}
