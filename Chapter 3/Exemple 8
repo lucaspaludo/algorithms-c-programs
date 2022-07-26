@@ -1,0 +1,57 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+
+  //criação da lista
+  struct medida {
+    float temp;
+    int dia;
+    int mes;
+    struct medida *proximo;
+  };
+
+  //função imprime lista
+  void imprimeLista(struct medida *ptMedida) {
+    while(ptMedida!=NULL) {
+      printf("\nTemperatura: %.2f ",ptMedida->temp);
+      printf("\nDia: %d ",ptMedida->dia);
+      printf("\nMês: %d\n ",ptMedida->mes);
+      ptMedida = ptMedida->proximo;
+    }
+  }
+
+  //função anexa informações no final da lista
+  void anexa(struct medida **ptCabeca, float novaTemp, int novoDia, int novoMes) {
+    struct medida *novaMedida = (struct medida*) malloc(sizeof(struct medida));
+    struct medida *ultimo = *ptCabeca;
+    novaMedida->temp = novaTemp;
+    novaMedida->dia = novoDia;
+    novaMedida->mes = novoMes;
+    novaMedida->proximo = NULL;
+    if (*ptCabeca == NULL) {
+      *ptCabeca= novaMedida;
+      return;
+    }
+    while (ultimo->proximo != NULL) {
+    ultimo = ultimo->proximo;
+   }
+    ultimo->proximo = novaMedida;
+  }
+
+ int main() {
+   
+  struct medida* cabeca = NULL;
+
+  anexa(&cabeca,25.3,19,9);
+  anexa(&cabeca,10.23,2,5);
+  anexa(&cabeca,32.22,28,6);
+  anexa(&cabeca,15.48,12,11);
+  anexa(&cabeca,-4.23,20,3);
+
+  imprimeLista(cabeca);
+
+return 0;
+}
+
+
+
