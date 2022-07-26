@@ -1,0 +1,31 @@
+/*
+Crie um programa que lê uma matriz de 4 x 4 números inteiros de um arquivo e 
+imprime seus valores na tela. Utilize o arquivo gerado no exercício anterior. 
+*/
+
+#include <stdio.h>
+
+int main(void) {
+
+ float mat [4][4];
+ int i,j;
+
+ //cria o arquivo
+ FILE *matrix = fopen("matriz.txt","r");
+ if(matrix == NULL){
+  printf("Não possível abrir o arquivo");
+  return 0;
+ }
+
+ //lê os valores do arquivo
+ for(i=0; i<4; i++){
+   for(j=0; j<4; j++){
+    fscanf(matrix,"%f", &mat[i][j]);
+    printf("%f\n",mat[i][j]);
+  }
+ }
+
+ fclose(matrix);
+ printf("\nValores Lidos!");
+
+}
