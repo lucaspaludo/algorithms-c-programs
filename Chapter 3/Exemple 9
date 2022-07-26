@@ -1,0 +1,90 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#define TAM 5
+
+  //criação da lista
+  struct medida {
+    float temp;
+    int dia;
+    int mes;
+    struct medida *proximo;
+  };
+
+  //função imprime lista
+  void imprimeLista(struct medida *ptMedida) {
+    while(ptMedida!=NULL) {
+      printf("\nTemperatura: %.2f ",ptMedida->temp);
+      printf("\nDia: %d ",ptMedida->dia);
+      printf("\nMês: %d\n ",ptMedida->mes);
+      ptMedida = ptMedida->proximo;
+    }
+  }
+
+  //função anexa informações no final da lista
+  void anexa(struct medida **ptCabeca, float novaTemp, int novoDia, int novoMes) {
+    struct medida *novaMedida = (struct medida*) malloc(sizeof(struct medida));
+    struct medida *ultimo = *ptCabeca;
+    novaMedida->temp = novaTemp;
+    novaMedida->dia = novoDia;
+    novaMedida->mes = novoMes;
+    novaMedida->proximo = NULL;
+    if (*ptCabeca == NULL) {
+      *ptCabeca= novaMedida;
+      return;
+    }
+    while (ultimo->proximo != NULL) {
+    ultimo = ultimo->proximo;
+   }
+    ultimo->proximo = novaMedida;
+  }
+
+  //função encontra a maior temperatura
+  float encontraMaior (struct medida *p){
+    
+    float maior;
+    int m_dia, m_mes,i;
+
+    maior=p->temp;
+    m_dia=p->dia;
+    m_mes=p->mes;
+    
+    for(i=1; i<TAM; i++){
+      if(p->temp > maior){
+        maior = p->temp;
+        m_dia = p->dia;
+        m_mes = p->mes;         
+      }
+     p=p->proximo;
+    }
+
+    printf("----------#####-----------#####----------");
+    printf("\n\n");
+    printf("Maior temperatura: %.2f", maior);
+    printf("\nDia: %d", m_dia);
+    printf("\nMês: %d", m_mes);
+  
+    return 0;
+  }
+ 
+ int main() {
+
+  float Maior;
+  struct medida* cabeca = NULL;
+  
+  anexa(&cabeca,25.3,19,9);
+  anexa(&cabeca,10.23,2,5);
+  anexa(&cabeca,32.22,28,6);
+  anexa(&cabeca,15.48,12,11);
+  anexa(&cabeca,-4.23,20,3);
+
+  imprimeLista(cabeca);
+
+  Maior=encontraMaior(cabeca);
+  
+    
+ return 0;
+}
+
+
+
