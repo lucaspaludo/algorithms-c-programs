@@ -1,0 +1,121 @@
+/* Também para a lista do exercício anterior implemente uma função para ler os valores de um determinado nó da lista. Os valores devem ser retornados através de ponteiros.*/
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+  //criação da lista
+  struct aluno {
+  char nome [200];
+  int idade;
+  int media;
+  struct aluno* proximo;
+ };
+
+  //função imprime lista
+  void imprimeLista(struct aluno *ptAluno)
+  {
+  while(ptAluno!=NULL)
+    {
+  printf("\n%s ",ptAluno->nome);
+  printf("\n%d ",ptAluno->idade);
+  printf("\n%d\n ",ptAluno->media);
+  ptAluno=ptAluno->proximo;
+    }
+  }
+
+  //função anexa informações no final da lista
+  void anexa(struct aluno **ptCabeca, char *novoNome, int novaIdade, int novaMedia)
+  {
+  struct aluno *novoAluno = (struct aluno*) malloc(sizeof(struct aluno));
+  struct aluno *ultimo = *ptCabeca;
+  strcpy(novoAluno->nome,novoNome);
+  novoAluno->idade = novaIdade;
+  novoAluno->media = novaMedia;
+  novoAluno->proximo = NULL;
+
+  if (*ptCabeca == NULL)
+  {
+  *ptCabeca= novoAluno;
+  return;
+  }
+  while (ultimo->proximo != NULL)
+   {
+    ultimo = ultimo->proximo;
+   }
+    ultimo->proximo = novoAluno;
+  }
+
+  //função para apagar o nó de uma posição
+  void removeData(struct aluno **ptCabeca, int Posicao)
+  {
+    if (*ptCabeca == NULL) return;
+    struct aluno *clear = *ptCabeca;
+    if (Posicao == 0)
+    {
+      *ptCabeca = clear->proximo;
+      free(clear);
+      return;
+    }
+
+  for (int i=0; clear!=NULL && i<Posicao-1; i++)
+  clear = clear->proximo;
+  if (clear == NULL || clear->proximo == NULL)
+  return;
+  struct aluno *proximoAluno = clear->proximo->proximo;
+  free(clear->proximo);
+  clear->proximo = proximoAluno;
+
+  }
+
+  //função para ler um determinado nó da lista
+  void leNo(struct aluno **ptCabeca, int Posicao, char *retNome, int *retIdade, float *retMedia )
+  {
+    if (*ptCabeca == NULL)
+  {
+    printf("Erro: Lista vazia\n");
+    return;
+  }
+    struct aluno *temp = *ptCabeca;
+    for (int i=0; temp!=NULL && i<Posicao; i++)
+  {
+    temp = temp->proximo;
+  }
+    if (temp == NULL)
+  {
+    printf("Erro: Posição inválida\n");
+    return;
+  }
+    strcpy(retNome, temp->nome);
+    *retIdade = temp->idade;
+    *retMedia = temp->media;
+  }
+
+ int main()
+ {
+  struct aluno* cabeca = NULL;
+
+  anexa(&cabeca, "Lucas1",19 ,9);
+  anexa(&cabeca, "Lucas2",68 ,8);
+  anexa(&cabeca, "Lucas3",72 ,7);
+  anexa(&cabeca, "Lucas4",44 ,6);
+  anexa(&cabeca, "Lucas5",87 ,5);
+ 
+  removeData(&cabeca, 2);
+  imprimeLista(cabeca);
+
+  char n[200];
+  int i;
+  float m;
+
+  leNo(&cabeca, 3, n, &i, &m);
+  printf("__________________________ \n\nNome = %s \n", n);
+  printf("Idade = %d \n", i);
+  printf("Média = %.2f \n", m);
+
+
+return 0;
+}
+
+
