@@ -1,0 +1,42 @@
+/*Faça um programa para encontrar os números primos usando uma 
+função. O programa deve imprimir todos os números primos em um 
+intervalo de valores inteiros, assim é necessário que o operador forneça o limite inferior e superior deste intervalo.*/
+
+#include <stdio.h>
+
+//criação da função para identificar números primos no intervalo
+void primo (int a, int b){
+
+  int cont=0;
+  int i,f;
+  
+   for(i=b; i<=a; i++){
+    cont = 0;
+    for(f=2; f<=i/2; f++){
+      if(i%f==0){
+        cont++;
+        break;
+      } 
+    }
+    if(cont==0){
+      printf("\n%d", i);
+    }
+  }
+
+}
+
+int main(void) {
+
+  int sup, inf;
+
+  printf("Digite o limite superior: "); //ler limite superior do intervalo
+  scanf("%d", &sup); //armazenar limite superior do intervalo
+  
+  printf("Digite o limite inferior: "); //ler limite inferior do intervalo
+  scanf("%d", &inf); //armazenar limite inferior do intervalo
+
+  primo(sup, inf);
+
+  return 0;
+}
+
