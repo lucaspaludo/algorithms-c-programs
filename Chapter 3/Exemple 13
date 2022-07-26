@@ -1,0 +1,84 @@
+
+#include <stdio.h>
+#define TAM 5
+
+/*
+typedef struct {
+  float x[TAM];
+} coordenada_x;
+
+
+typedef struct {
+  float y[TAM];
+} coordenada_y;
+
+
+typedef struct {
+  float z[TAM];
+} coordenada_z;
+*/
+
+//criação da estrutura com os valores
+typedef struct {
+  float _x[TAM];
+  float _y[TAM];
+  float _z[TAM];
+  int inicio;
+  int fim;
+} fila;
+
+//criação da fila
+void criaFila (fila *f){
+  f->inicio = -1;
+  f->fim = -1;
+}
+
+//função enqueue
+void enQueue(fila *f, float dado1, float dado2, float dado3){
+  if(f->fim == TAM-1){
+    printf("Fila cheia.");
+  }
+
+  if(f->inicio == -1){
+    f->inicio = 0;
+    f->fim ++;
+    f->_x[f->inicio]=dado1;
+    f->_y[f->fim-1]=dado2;
+    f->_z[f->fim]=dado3;
+  }
+}
+
+//função dequeue
+float deQueue(fila *f){
+  float d1;
+  float d2;
+  float d3;
+  
+  if(f->inicio){
+    printf("\nFila vazia.");
+    return 0;
+  }
+ else {
+    d1=f->_x[f->fim];
+    d2=f->_y[f->fim-1];
+    d3=f->_z[f->inicio];
+    
+    f->inicio++;
+    if(f->inicio > f->fim){
+      f->inicio = f->fim = -1;
+    }
+  }
+  return d1;
+}
+
+int main(void) {
+  fila minhaFila;
+  criaFila(&minhaFila);
+
+  enQueue(&minhaFila, 1,2,3);
+  
+  printf("\n%.2f, %.2f, %.2f", deQueue(&minhaFila), deQueue(&minhaFila), deQueue(&minhaFila));
+  
+  return 0;
+}
+
