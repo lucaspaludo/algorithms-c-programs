@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+void maior (int valor1, int valor2, int valor3, int valor4)
+{
+  if((valor1>valor2) && (valor1>valor3) && (valor1>valor4))
+  {
+    printf("\n\nO maior valor é %d", valor1);
+  }
+
+  if((valor2>valor1) && (valor2>valor3) && (valor2>valor4))
+  {
+    printf("\n\nO maior valor é %d", valor2);
+  }
+
+  if((valor3>valor1) && (valor3>valor2) && (valor3>valor4))
+  {
+    printf("\n\nO maior valor é %d", valor3);
+  }
+
+  if((valor4>valor1) && (valor4>valor2) && (valor4>valor3))
+  {
+    printf("\n\nO maior valor é %d", valor4);
+  }
+}
+
+
+int main(void) {
+  int a,b,c,d;
+
+  printf("\nDigite o valor 1: ");
+  scanf("%i",&a);
+
+  printf("\nDigite o valor 2: ");
+  scanf("%i",&b);
+
+  printf("\nDigite o valor 3: ");
+  scanf("%i",&c);
+
+  printf("\nDigite o valor 4: ");
+  scanf("%i",&d);
+
+   maior(a, b, c, d);
+
+  return 0;
+}
