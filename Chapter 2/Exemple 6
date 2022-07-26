@@ -1,0 +1,29 @@
+/* Faça um programa que utiliza uma função para determinar se um número 
+inteiro é par ou ímpar, em seguida imprima na tela o resultado. 
+*/
+
+
+#include <stdio.h>
+
+//criação da função para determinar se é par ou ímpar
+
+void par_impar (int a){
+  
+  if(a%2==0){
+    printf("\nO núemro %d é par.", a); //imprime número dizendo que é par
+  } else{
+    printf("\nO núemro %d é ímpar.", a); //imprime número dizendo que é ímpar
+  }
+}
+
+int main(void) {
+  int num;
+  
+  printf("Digite um número: "); //ler o número
+  scanf("%d", &num); //armazena o número
+
+  par_impar(num); //chamar função passando o número digitado
+
+
+  return 0;
+}
