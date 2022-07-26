@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int main(void) {
+  
+  int i;
+  int f;
+  int f_1 = 1;
+  int f_2 = 0;
+
+  printf("0");
+  printf("\n1");
+
+  
+  
+  for(i=2; i<20; i++){
+    f = f_1 + f_2;
+    printf("\n%d",f);
+    f_2 = f_1;
+    f_1 = f;
+  }
+  
+
+  return 0;
+}
