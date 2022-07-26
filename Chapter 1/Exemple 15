@@ -1,0 +1,22 @@
+/*Faça um programa e nele crie um vetor de 10 números inteiros. Inicialize este vetor 
+com os números de 1 a 10. Imprima os elementos deste vetor em ordem inversa 
+utilizando um ponteiro. 
+*/
+
+#include <stdio.h>
+
+int main(void) {
+
+  int vet[10] = {1,2,3,4,5,6,7,8,9,10};    
+  int *p;
+  int i;
+
+  p=&vet[9];
+
+  for(i=0; i<10;i++){
+    printf("\n%d", *p);
+    p--;
+  }
+  
+  return 0;
+}
