@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+//calcula o fatorial usando recursividade
+int funcaoRecursiva(int n){
+if(n>=1)
+{
+return n*funcaoRecursiva(n-1);
+}
+return 1;
+}
+
+//chama a função
+int main(void){
+
+int num, res;
+printf("Digite um número ");
+scanf("%d",&num);
+res=funcaoRecursiva(num);
+printf("\n%d", res);
+
+return 0;
+}
