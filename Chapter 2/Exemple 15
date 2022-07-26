@@ -1,0 +1,32 @@
+/*Faça um programa que lê um número inteiro com sinal e converte este 
+número em uma cadeia de caracteres com os dígitos deste número, ou seja 
+converte o número em texto. Não é permitido utilizar funções prontas para 
+esta conversão. Imprima o texto resultante desta conversão.*/
+
+
+#include <stdio.h>
+
+int main(void) {
+  int num;
+
+  printf("Digite o número: ");
+  scanf("%d", &num);
+
+  if((num>=0 && num<=47) || (num>=58 && num<=64) || (num>=91 && num<=96) || (num>=123 && num<=126)){
+   printf("\nSímbolo: %c", num);
+  }
+  
+ if(num>=48 && num<=57){
+   printf("\nNúmero: %c", num);
+  }
+ 
+ if((num>=65 && num<=90) || (num>=97 && num<=122)){
+   printf("\nLetra: %c", num);
+  }
+
+  if((num<0) || (num>126)){
+    printf("\nCaractere não existente.");
+  }
+  return 0;
+}
+
