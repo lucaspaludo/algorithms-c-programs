@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <string.h>
+
+void InsertSort(char nome[10][100], int n)
+{
+    char chave[100];
+    int c;
+ 
+    for (int i=1; i<n; i++)
+    {
+        for (int j=1; j<n; j++)
+        {
+            strcpy(chave, nome[j]);
+            c=i-1;
+            while((strcmp(nome[c], nome[c+1]) > 0) && (j>=0)){
+              strcpy(nome[c], nome[c+1]);
+              j--;
+            }
+            strcpy(chave, nome[c+1]);
+        }
+        
+    }
+    
+}
+
+  
+  int main(void) {
+  
+    int i,j;
+    char vetor[10][100];
+    printf("Digite 10 nomes:\n");
+
+    for(i=0; i<10; i++){
+      scanf("%s", vetor[i]);
+    }
+
+    InsertSort(vetor, 10);
+
+    for(i=0; i<10; i++){
+     printf("\n%s", vetor[i]);    
+    }
+    
+
+  
+  return 0;
+}
