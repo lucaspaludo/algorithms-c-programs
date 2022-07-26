@@ -1,0 +1,86 @@
+/* Crie um programa que implementa uma árvore binária para armazenar nomes de
+alunos. Utilize a função strcmp(...)
+para verificar a ordem dos nomes.*/
+
+#include<stdlib.h>
+#include<stdio.h>
+#include<string.h>
+
+struct stNoArvore { //criação da estutura
+  char *nome;
+  struct stNoArvore *direita;
+  struct stNoArvore *esquerda;
+  };
+
+  typedef struct stNoArvore noArvore;
+
+  void insereNo(noArvore **arvore, char val[]) { //função para inserir nós na árvore
+    noArvore *temp = NULL;
+
+    if(!(*arvore)) { 
+      temp = (noArvore *)malloc(sizeof(noArvore));
+      temp->esquerda = NULL;
+      temp->direita = NULL;
+      temp->nome = val;
+      *arvore = temp;
+      return;
+    }
+
+    if(strcmp(val,(*arvore)->nome)<0) {
+    insereNo(&(*arvore)->esquerda, val);
+    } else {
+    insereNo(&(*arvore)->direita, val);
+    }
+  }
+
+  noArvore* procuraNo(noArvore ** arvore, char val[]) { //função que pesquisar e verificar a ordem dos nomes
+
+    if(!(*arvore)) {
+      return NULL;
+    }
+
+    if(strcmp(val,(*arvore)->nome)==0) {
+      return *arvore;
+    }
+      
+    if(strcmp(val,(*arvore)->nome)<0) {
+      return procuraNo(&((*arvore)->esquerda), val);
+    }
+  
+    return procuraNo(&((*arvore)->direita), val);
+  }
+
+  void excluiArvore(noArvore *arvore) { //função para exlcuir a árvore
+    
+    if (arvore) {
+      excluiArvore(arvore->esquerda);
+      excluiArvore(arvore->direita);
+      free(arvore);
+    }
+  }
+
+
+  void imprimeInorder(noArvore *arvore) { //função para imprimir os nomes
+    if(arvore) {
+      imprimeInorder(arvore->esquerda);
+      printf("%s\n",arvore->nome);
+      imprimeInorder(arvore->direita);
+    }
+  }
+
+
+  int main() {
+
+    noArvore *raiz = NULL;
+    noArvore *tmp;
+    insereNo(&raiz, "Lucas");
+    insereNo(&raiz, "Jim");
+    insereNo(&raiz, "Freddie");
+    insereNo(&raiz, "John");
+    insereNo(&raiz, "Alan");
+    insereNo(&raiz, "Zenaide");
+    insereNo(&raiz, "Thiago");
+
+    imprimeInorder(raiz);
+
+}
