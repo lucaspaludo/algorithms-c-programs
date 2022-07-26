@@ -1,0 +1,31 @@
+/*Faça um programa que lê dois números do telado e armazena estes números em 
+variáveis do tipo float. Em seguida crie dois ponteiros e atribua o endereço das duas 
+variáveis aos dois ponteiros. Faça então a soma dos dois valores digitados através de 
+seus ponteiros e imprima o resultado. */
+
+
+
+#include <stdio.h>
+
+int main(void) {
+
+  float num1,num2;
+
+  printf("Digite o primeiro número: ");
+  scanf("%f", &num1);
+
+  printf("Digite o segundo número: ");
+  scanf("%f", &num2);
+
+  float *x,*y;
+  x=&num1;
+  y=&num2;
+
+  float result;
+  result = *x+*y;
+
+  printf("\n%.2f",result);
+
+  
+  return 0;
+}
