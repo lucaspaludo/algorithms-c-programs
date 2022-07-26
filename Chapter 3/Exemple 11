@@ -1,0 +1,77 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#define TAM 3
+
+typedef struct {
+  float x[TAM];
+  float y[TAM];
+  float z[TAM];
+  int topo;
+  } pilha;
+
+void cria_pilha(pilha *p){
+  p->topo = -1;
+}
+
+int pilha_vazia(pilha *p){
+  if(p->topo == -1){
+    return 1;
+  } else return 0;
+}
+
+int pilha_cheia (pilha *p){
+  if(p->topo == TAM-1) return 1;
+  else return 0;
+}
+
+void push(pilha *p, float a, float b, float c){
+  if(pilha_cheia(p)==1){
+    printf("\nA pilha está cheia.");
+  } else{
+    p->topo++;
+    p->x[p->topo] = a;
+    p->y[p->topo] = b;
+    p->z[p->topo] = c;
+  }
+}
+
+ float pop(pilha *p){
+   float aux;
+   if(pilha_vazia(p)==1){
+     printf("\n\nA pilha está vazia.");
+   } else {
+     aux = p->x[p->topo];
+     aux = p->y[p->topo];
+     aux = p->z[p->topo];
+    p->topo--;
+    return aux;
+   }
+ }
+
+
+  int main(void) {
+    pilha *p = (pilha*)malloc(sizeof(pilha));
+    cria_pilha(p);
+        
+
+    push(p,3,4,5); //elementos inseridos na pilha
+    push(p,5,4,3);
+    push(p,6,5,2);
+
+    float aux;
+  
+    aux= pop(p);
+    printf("\nSaiu: %.2f", aux); //retirando o último elemento
+
+    aux= pop(p);
+    printf("\nSaiu: %.2f", aux);
+
+    aux= pop(p);
+    printf("\nSaiu: %.2f", aux);
+
+    aux= pop(p);
+    printf("\nSaiu: %.2f", aux); //não há mais elementos para retirar,, pilha vazia
+  return 0;
+}
+
