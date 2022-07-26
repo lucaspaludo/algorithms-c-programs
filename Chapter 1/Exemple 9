@@ -1,0 +1,28 @@
+/*
+5 Faça um programa que fica lendo repetidamente uma palavra do teclado. O programa
+deve comparar cada palavra lida com "Luzerna". Se a comparação for verdadeira o
+programa deve imprimir "Você acertou!" e finalizar
+*/
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+    
+  char palavra[500];
+ 
+  while(1)
+  {
+    printf("Digite a palavra correta para prosseguir: ");
+    scanf("%s", palavra);
+
+    if(strcmp(palavra,"Luzerna")==0)
+    {
+      printf("\nParabéns! Você acertou.");
+      break;
+    }
+
+  }
+
+  return 0;
+}
