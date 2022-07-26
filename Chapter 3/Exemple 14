@@ -1,0 +1,109 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+
+//criação da estrutura
+typedef struct no {
+  char *nome;
+  int idade;
+  int matricula;
+  struct no *direita;
+  struct no *esquerda;
+} candidato;
+
+//função para inserir valores na árvore
+void insereNo(candidato **arvore, int n3, char n1[200], int n2){
+  candidato *temp = NULL;
+  if(!(*arvore)){
+    temp = (candidato*)malloc(sizeof(candidato));
+    temp->esquerda = NULL;
+    temp->direita = NULL;
+    temp->matricula=n3;
+    temp->idade=n2;
+    temp->nome=n1;
+    
+    *arvore=temp;
+    return;
+   }
+
+   if(n3<(*arvore)->matricula){
+     insereNo(&(*arvore)->esquerda,n3,n1,n2);
+  }
+
+   else{
+     insereNo(&(*arvore)->direita,n3,n1,n2);
+   }
+}
+
+//função para imprimir a ávore na ordem da matrícula
+void imprimeInorder (candidato *arvore){
+  if(arvore){
+    imprimeInorder(arvore->esquerda);
+    printf("Número da matrícula: %d\n", arvore->matricula);
+    printf("Nome: %s\n", arvore->nome);
+    printf("Idade: %d\n", arvore->idade);
+    puts("");
+    imprimeInorder(arvore->direita);
+  }
+}
+
+//função para excluir a árvore
+void excluiArvore(candidato *arvore){
+  if(arvore){
+    excluiArvore(arvore->esquerda);
+    excluiArvore(arvore->direita);
+    free(arvore);
+  }
+}
+
+//função para procurar nó pela matrícula
+candidato *procuraNo (candidato **arvore, int p){
+  if(!(*arvore)){
+    return NULL;
+  }
+
+  if(p==(*arvore)->matricula){
+    return *arvore;
+  }
+
+  if(p<(*arvore)->matricula){
+    return procuraNo(&((*arvore)->esquerda), p);
+  }
+  return procuraNo(&((*arvore)->direita), p);
+}
+
+int main(void) {
+  candidato *raiz = NULL;
+  candidato *tmp;
+
+  //inserindo informações na árvore
+  insereNo(&raiz,2014,"Lucas Paludo",19);
+  insereNo(&raiz,2026,"Roger Waters",78);
+  insereNo(&raiz,2025,"Fredie Mercury",45);
+  insereNo(&raiz,2017,"Jim",22);
+  insereNo(&raiz,2018,"Arthur",17);
+  insereNo(&raiz,2015,"Alan",20);
+  insereNo(&raiz,2012,"Rebeca",19);
+  insereNo(&raiz,2019,"Ricardo",40);
+  
+  //imprimindo informações ordenadas pela matrícula
+  printf("\nDados:\n");
+  puts("");
+  imprimeInorder(raiz);
+  puts("");
+
+  //procurando informações pela matrícula
+  tmp = procuraNo(&raiz, 2017);
+
+  if(tmp){
+    printf("Nó com número de matrícula %d encontrado\n", tmp->matricula);
+  }
+    else{
+      printf("\n Nó não encontrado. \n");
+    }
+
+    //exclusão da árvore
+    excluiArvore(raiz);
+
+  return 0;
+}
