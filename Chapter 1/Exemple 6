@@ -1,0 +1,33 @@
+/*
+Crie um programa que lê uma matriz de 4 x 4 números do tipo float e armazena esta 
+matriz em um arquivo. Não é necessário que os números fiquem em formato de matriz 
+no arquivo, basta armazená-los. 
+*/
+
+#include <stdio.h>
+
+int main(void) {
+
+ float mat [4][4];
+ int i,j;
+
+ //cria o arquivo
+ FILE *matrix = fopen("matriz.txt","w");
+ if(matrix == NULL){
+  printf("Não possível abrir o arquivo");
+  return 0;
+ }
+
+ //imprime os valores no arquivo
+ for(i=0; i<4; i++){
+   for(j=0; j<4; j++){
+    printf("Digite o elemento %d %d: ",i,j);
+    scanf("%f", &mat[i][j]);
+    fprintf(matrix,"%.2f\n",mat[i][j]);
+   }
+ }
+
+ fclose(matrix);
+ printf("\nValores Gravados!");
+
+}
