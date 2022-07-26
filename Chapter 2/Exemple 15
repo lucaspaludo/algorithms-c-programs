@@ -1,32 +1,42 @@
-/*Faça um programa que lê um número inteiro com sinal e converte este 
-número em uma cadeia de caracteres com os dígitos deste número, ou seja 
-converte o número em texto. Não é permitido utilizar funções prontas para 
-esta conversão. Imprima o texto resultante desta conversão.*/
-
+/*Faça um programa que lê uma frase do teclado e utiliza uma função para 
+determinar o número de palavras nesta frase. Os parâmetros para esta 
+função devem ser passados por referência. Imprima então o número de 
+palavras encontradas.*/
 
 #include <stdio.h>
 
-int main(void) {
-  int num;
-
-  printf("Digite o número: ");
-  scanf("%d", &num);
-
-  if((num>=0 && num<=47) || (num>=58 && num<=64) || (num>=91 && num<=96) || (num>=123 && num<=126)){
-   printf("\nSímbolo: %c", num);
-  }
+void num_pal(char *carac, int *i, int *cont){ //criação da função passando os parâmetros por referência
   
- if(num>=48 && num<=57){
-   printf("\nNúmero: %c", num);
-  }
- 
- if((num>=65 && num<=90) || (num>=97 && num<=122)){
-   printf("\nLetra: %c", num);
+  int val=0; 
+  i=&val;
+  
+  int van=0;
+  cont=&van;
+    
+  printf("Digite a frase: "); //captura da frase
+  fgets(carac, 200, stdin);
+
+  while(carac[val]!='\n' && carac[val]!='\0'){ //contagem das palavras se baseando nos caracteres especiais
+    while(carac[val]==' ') val++;
+    
+    if(carac[val]!='\n' && carac[val]!='\0'){
+      van++;
+      while(carac[val]!='\n' && carac[val]!=' ' && carac[val]!='\0') val++;
+    }
   }
 
-  if((num<0) || (num>126)){
-    printf("\nCaractere não existente.");
-  }
+  printf("\nNúmero de palavras digitadas: %d", van);
+
+}
+
+int main(void) {
+
+  char vet[200];
+  int j;
+  int count;
+
+  num_pal(vet, &j, &count); //chamada da função passando os parâmetros por referência
+
   return 0;
 }
 
