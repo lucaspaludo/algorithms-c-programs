@@ -1,0 +1,34 @@
+/*Faça um programa que calcula o resultado de um número elevado a uma
+potência inteira. O programa deve utilizar recursividade para calcular a
+potência.*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+  //função recursiva para o cálculo de uma potência elevada a um número inteiro
+  int pot (int base, int expoente){
+    
+    if(expoente==0){
+      return 1;
+    } else {
+      return base * pot(base, expoente-1);
+    }
+  }
+
+  int main(void) {
+  
+  int a,b;
+
+  printf("Digite o valor da base: "); //lê a base
+  scanf("%d", &a);
+
+  printf("\nDigite o valor do expoente: "); //lê o expoente
+  scanf("%d", &b);
+
+  printf("\n%d elevado a %d", a,b);
+  printf("\nO resultado é: %d", pot(a,b)); //imprime número elevado a uma potência inteira
+  
+  return 0;
+}
+
