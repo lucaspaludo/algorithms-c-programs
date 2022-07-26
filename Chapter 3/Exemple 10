@@ -1,0 +1,110 @@
+
+#include <stdio.h>  
+#include <stdlib.h>  
+
+struct No{  
+    int dado;  
+    struct No *proximo;  
+};      
+   
+struct No *cabeca;
+struct No *ultimo = NULL;  
+   
+void anexa(int dado) {  
+    
+    struct No *novoNo = (struct No*)malloc(sizeof(struct No));  
+    novoNo->dado = dado;  
+    novoNo->proximo = NULL;  
+       
+    if(cabeca == NULL) {  
+        cabeca = novoNo;  
+        ultimo = novoNo;  
+    }  
+    else {  
+        ultimo->proximo = novoNo;  
+        ultimo = novoNo;  
+    }  
+}  
+
+//função que troca os nós de posição
+void trocaNo(int n1, int n2){  
+
+    struct No *anteNo1 = NULL;
+    struct No *anteNo2 = NULL;
+    struct No *no1 = cabeca;
+    struct No *no2 = cabeca;
+    struct No *temp = NULL;
+
+    if(cabeca == NULL) return;  
+              
+    if(n1 == n2) return;  
+      
+    while(no1 != NULL && no1->dado != n1) {  
+        anteNo1 = no1;  
+        no1 = no1->proximo;  
+    }  
+      
+    while(no2 != NULL && no2->dado != n2) {  
+        anteNo2 = no2;  
+        no2 = no2->proximo;  
+    }  
+      
+    if(no1 != NULL && no2 != NULL) {  
+        if(anteNo1 != NULL) anteNo1->proximo = no2;          
+        else cabeca  = no2;  
+        if(anteNo2 != NULL) anteNo2->proximo = no1;  
+        else cabeca  = no1;  
+        temp = no1->proximo;   
+        no1->proximo = no2->proximo;   
+        no2->proximo = temp;       
+    }      
+     
+}  
+      
+void imprimeLista() {  
+    
+    struct No *temp = cabeca;  
+      
+    if(cabeca == NULL) {  
+        printf("\nLista vazia\n");  
+        return;  
+    }  
+    while(temp != NULL) {  
+        printf("%d ", temp->dado);  
+        temp = temp->proximo;  
+    }  
+    printf("\n");  
+}  
+      
+int main()  
+{  
+    int x,y;
+    
+    anexa(1);  
+    anexa(2);  
+    anexa(3);  
+    anexa(4);  
+    anexa(5);  
+      
+    printf("\nLista Original: \n");  
+    imprimeLista(); 
+    puts("");
+      
+    printf("Digite a posição do primeiro elemento a ser trocado: ");
+    scanf("%d", &x);
+
+    printf("Digite a posição do segundo elemento a ser trocado: ");
+    scanf("%d", &y);
+
+    if((x>=1 & x<=5) && (y>=1 & y<=5)) trocaNo(x,y);
+    else {
+      printf("\nDigite valores válidos.");
+      return 0;
+    }
+   
+    printf("\nLista com os valores trocados: \n");  
+    imprimeLista();  
+   
+    return 0;  
+}
+
