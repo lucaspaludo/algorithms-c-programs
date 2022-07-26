@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define TAM 100
+
+typedef struct {
+  int item[TAM];
+  int topo;
+} pilha;
+
+void cria_pilha(pilha *p){
+  p->topo = -1;
+}
+
+int pilha_vazia(pilha *p){
+  if(p->topo == -1){
+    return 1;
+  } else return 0;
+}
+
+int pilha_cheia (pilha *p){
+  if(p->topo == TAM-1) return 1;
+  else return 0;
+}
+
+void insere_pilha(pilha *p, int x){
+  if(pilha_cheia(p)==1){
+    printf("\nA pilha está cheia.");
+  } else{
+    p->topo++;
+    p->item[p->topo] = x;
+  }
+}
+
+ int remove_pilha(pilha *p){
+   int aux;
+   if(pilha_vazia(p)==1){
+     printf("\nA pilha está vazia.");
+   } else {
+     aux = p->item[p->topo];
+    p->topo--;
+    return aux;
+   }
+ }
+
+
+int main(void) {
+  pilha *p = (pilha*)malloc(sizeof(pilha));
+  cria_pilha(p);
+
+  insere_pilha(p,666);
+  insere_pilha(p,777);
+  insere_pilha(p,888);
+
+  int aux;
+  int rec;
+
+  aux= remove_pilha(p);
+  printf("\nSaiu: %d", aux); //retira o último elemento
+
+  aux= remove_pilha(p);
+  printf("\nSaiu: %d", aux);
+
+  aux= remove_pilha(p);
+  printf("\nSaiu: %d", aux);
+
+  aux= remove_pilha(p);
+  printf("\nSaiu: %d", aux); //não há mais elementos para retirar,, pilha vazia
+  return 0;
+}
