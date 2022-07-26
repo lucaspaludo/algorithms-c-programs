@@ -1,0 +1,27 @@
+/*Faça um programa que lê 10 números inteiros do teclado e os armazena em um vetor 
+de 10 elementos. Em seguida imprima na tela os números que aparecem mais de uma 
+vez no vetor (números que se repetem).*/
+
+
+#include <stdio.h>
+
+  int main(void) {
+  
+   int num[10];
+   int i,j;
+    
+   for(i=0;i<10;i++){
+     printf("Digite o valor a ser armazenado: ");
+     scanf("%d", &num[i]);
+   }
+
+   for(i=0;i<10;i++){
+     for(j=i+1; j<10; j++){
+      if(num[i]==num[j]){
+        printf("\nO número %d está se repetindo!", num[i]);
+      } 
+     }
+   }
+
+  return 0;
+}
