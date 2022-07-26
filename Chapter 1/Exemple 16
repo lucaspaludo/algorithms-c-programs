@@ -1,0 +1,52 @@
+/*Faça um programa em C que cria uma estrutura com 3 variáveis quaisquer. Crie 2 
+elementos desta estrutura. Utilizando ponteiros para a estrutura leia os dados do 
+teclado e preencha as variáveis no interior das estruturas. Imprima estes valores 
+utilizando também ponteiros. 
+*/
+
+#include <stdio.h>
+
+int main(void) {
+
+  struct valores{
+    int x;
+    int y;
+    float z;
+  };
+  //crição dos dois elementos da estrutura
+  struct valores elemento1, elemento2, *p1, *p2;
+  p1 = &elemento1; //ponteiro que aponta para o endereço do elemento1
+  p2 = &elemento2;  //ponteiro que aponta para o endereço do elemento2 
+
+
+  //armazzenamento dos valores utilizando ponteiros para estruturas
+  printf("Digite um valor inteiro para x: ");
+  scanf("%d", &p1->x);
+
+  printf("Digite um valor inteiro para y: ");
+  scanf("%d", &p1->y);
+  
+  printf("Digite um valor real para z: ");
+  scanf("%f", &p1->z);
+
+  //armazzenamento dos valores utilizando ponteiros para estruturas
+  printf("\nDigite um valor inteiro para x: ");
+  scanf("%d", &p2->x);
+
+  printf("Digite um valor inteiro para y: ");
+  scanf("%d", &p2->y);
+  
+  printf("Digite um valor real para z: ");
+  scanf("%f", &p2->z);
+
+  //impressão dos vaalores utilizando ponteiros
+  printf("\n%d", p1->x);
+  printf("\n%d", p1->y);
+  printf("\n%.2f", p1->z);
+
+  printf("\n\n%d", p2->x);
+  printf("\n%d", p2->y);
+  printf("\n%.2f", p2->z);
+
+  return 0;
+}
