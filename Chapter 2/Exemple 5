@@ -1,0 +1,46 @@
+
+/*Faça um programa que lê 10 números inteiros do teclado e os armazena 
+em um vetor, na sequência utilize a função ordena (apesentada ao lado) 
+para ordená-lo. Em seguida imprima o vetor ordenado.*/
+
+#include <stdio.h>
+//criação da função para ordenar o vetor
+
+  void ordena(int *vet, int n_elementos){ 
+    int i,j,k,temp; 
+    k=n_elementos-1; 
+    for(i=0; i<n_elementos; i++) 
+  { 
+    for(j=0; j<k; j++){ 
+      if(vet[j]>vet[j+1]) 
+  { 
+    temp=vet[j]; 
+  vet[j]=vet[j+1]; 
+  vet[j+1]=temp; 
+     } 
+    } 
+  k--; 
+ }
+} 
+
+int main(void) {
+
+  int vet[10];
+  int i;
+  int ordem;
+
+  //ler e armazenar os números no vetor
+  for(i=0; i<10; i++){
+    printf("Digite o Número: ");
+    scanf("%d", &vet[i]);
+   }
+
+  //chamando a função passando vetor como parâmetro
+   ordena(vet,10);
+   for(i=0; i<10; i++){
+     printf(" \n%d", vet[i]); //imprimindo vetor ordenado
+   }
+   
+  return 0;
+}
+
