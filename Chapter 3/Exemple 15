@@ -1,0 +1,54 @@
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+void troca (int *a, int *b){
+  int t = *a;
+  *a = *b;
+  *b = t;
+}
+
+int ordena(char nome [10][100], int inicio, int fim){
+    
+    int i = (inicio-1);
+    for(int j = inicio; j<fim; j++){
+      if (strcmp(nome[j], nome[fim]) < 0){
+        i++;
+        troca(nome[i], nome[j]);
+      }
+    }
+  troca(nome[i+1], nome[fim]);
+  
+  return(i+1);
+}
+
+void QuickSort (char nome[10][100], int inicio, int fim){
+
+  if (inicio<fim){
+    char corte = ordena(nome,inicio,fim);
+    QuickSort(nome, inicio, corte-1);
+    QuickSort(nome,corte+1,fim);
+  }
+
+}
+
+
+int main(void) {
+
+  char vetor_nomes [10][100];
+  int i;
+   
+   printf("Digite 10 nome: \n");
+   
+   for(i=0; i<10; i++){
+     scanf("%s", vetor_nomes[i]);
+   }
+
+   QuickSort(vetor_nomes, 0, 9);
+   for(i=0; i<10; i++){
+     printf("\n%s", vetor_nomes[i]);
+   }
+ 
+  return 0;
+}
