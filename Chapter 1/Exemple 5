@@ -1,0 +1,70 @@
+#include <stdio.h>
+
+//declaração da estrutura
+struct strDados
+{
+  char nome [100];
+  int idade;
+  long CPF;
+};
+
+//declaração da função e passando parâmetro por referência
+void leDados(struct strDados *a, struct strDados *b, struct strDados *c)
+{
+
+  printf("Digite seu nome: ");
+  scanf("%s", a->nome);
+
+  printf("Digite sua idade: ");
+  scanf("%i", &a ->idade);
+
+  printf("Digite seu CPF: ");
+  scanf("%ld", &a->CPF);
+
+  printf("\nDigite seu nome: ");
+  scanf("%s", b->nome);
+
+  printf("Digite sua idade: ");
+  scanf("%i", &b->idade);
+
+  printf("Digite seu CPF: ");
+  scanf("%ld", &b->CPF);
+
+  printf("\nDigite seu nome: ");
+  scanf("%s", c->nome);
+
+  printf("Digite sua idade: ");
+  scanf("%i", &c->idade);
+
+  printf("Digite seu CPF: ");
+  scanf("%ld", &c->CPF);
+
+}
+
+void imprimeDados(struct strDados *a, struct strDados *b, struct strDados *c)
+{
+
+  printf("\nNome: %s", a ->nome);
+  printf("\nNome: %d", a ->idade);
+  printf("\nNome: %ld", a ->CPF);
+
+  
+  printf("\nNome: %s", b ->nome);
+  printf("\nNome: %d", b ->idade);
+  printf("\nNome: %ld", b ->CPF);
+
+  
+  printf("\nNome: %s", c ->nome);
+  printf("\nNome: %d", c ->idade);
+  printf("\nNome: %ld", c ->CPF);
+
+}
+
+int main(void) {
+  
+  struct strDados p1, p2, p3;
+
+  leDados(&p1, &p2, &p3);
+  imprimeDados(&p1, &p2, &p3);
+  return 0;
+}
