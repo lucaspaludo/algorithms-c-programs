@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+  char programa[1000];
+
+  FILE *arquivo = fopen("frase.txt","w");
+  if(arquivo==NULL){
+    printf("Não foi possível abrir o programa. Tente novamente mais tarde.");
+    return 0;
+  }
+
+
+  printf("Digite a frase: ");
+  fgets(programa,1000,stdin);
+  fprintf(arquivo,"%s",programa);
+
+  fclose(arquivo);
+  
+
+
+  return 0;
+}
